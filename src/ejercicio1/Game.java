@@ -1,22 +1,61 @@
 package ejercicio1;
 
+/**
+ * Clase que controla el flujo del Juego
+ * @author Antonio Navaro
+ * @version Beta 1.0
+ * @see PerArrays
+ * @see Mathematics
+ */
 public class Game {
-    private static final boolean DEV = true;
+    /**
+     * Variable de Desarrollo, imprime el tablero entero arriba del que tu estes jugando
+     */
+    private static final boolean DEV = false; // ? Cambia esta variable a true para tener Hacks al Jugar
 
+    /**
+     * Número de Minas que tendrá el Tablero, si es menor a 0 o menor no se generarán minas
+     */
     private static final int NUMERO_MINAS = 6;
     
+    /**
+     * Tablero que solo verá la máquina, contiene las minas y los números
+     */
     public static String tablero[] = new String[20];
+
+    /**
+     * Tablero del Jugador, podrá colocar banderines y destapar casillas
+     */
     public static String tableroJugador[] = new String[20];
 
+    /**
+     * Posición relativa del cursor, este cursor "se mueve por el String del Array" y no por las posiciones del array
+     */
     public static int cursor = 1;
+
+    /**
+     * Posición absoluta del cursor, esta posición dice la posición real que estas apuntando en el array
+     */
     public static int cursorPos = 0;
 
+    /**
+     * Variable que controla cuantas casillas has destapado, cuando llegue a tablero.lenght - NUMERO_MINAS habrás ganado
+     */
     public static int casillasDestapadas = 0;
 
+    /**
+     * Variable que controla las minas que te quedan por tapar (Es opcional tapar las minas)
+     */
+    public static int minasRestantes = NUMERO_MINAS;
+
+    /**
+     * Función que genera el tablero con las posiciones de las minas y los números correspondientes, también hace la función de reset() cada vez que empieces una nueva partida
+     */
     public static void generateBoard() {
         // Reseteamos las variables, nuevas partidas
         cursor = 1;
         cursorPos = 0;
+        minasRestantes = NUMERO_MINAS;
         Main.juego = true;
         Main.haGanado = false;
         casillasDestapadas = 0;
@@ -49,6 +88,11 @@ public class Game {
         }
     }
 
+    /**
+     * Función que genera el número que debe ir en una casilla sin mina
+     * @param posActual Posición en el array
+     * @return El número que tendrá que ser colocado en el array
+     */
     public static String checkMines(int posActual) {
         int numCasilla = 0;
         int mode = 0;
@@ -86,13 +130,20 @@ public class Game {
         return String.valueOf(numCasilla);
     }
 
+    /**
+     * Imprime el tablero, así como las minas restantes y el cursor
+     */
     public static void printGame() {
         ConsoleManager.clear();
-        if (DEV)
+        System.out.printf("Minas Restantes: %s\n\n", minasRestantes);
+        if (DEV) {
+            System.out.printf("Casillas Destapadas: %s\n\n", casillasDestapadas);
             PerArrays.printArray(tablero);
+        }
         System.out.print("[");
         for (int pos = 0; pos < tableroJugador.length; pos++) {
             switch (tableroJugador[pos]) {
+                case "F":
                 case "x":
                     System.out.print(ConsoleManager.RED);
                     break;
@@ -128,6 +179,9 @@ public class Game {
         } System.out.println(ConsoleManager.RESET);
     }
 
+    /**
+     * Igual que la anterior, solo que solo se usa al terminar el juego, de forma que imprime el juego completo
+     */
     public static void printGameFull() {
         ConsoleManager.clear();
         if (DEV)
@@ -170,6 +224,9 @@ public class Game {
         } System.out.println(ConsoleManager.RESET);
     }
 
+    /**
+     * Función que controla el movimiento del cursor, así como el sistema de banderas del juego
+     */
     public static String moveCursor(String movement) {
         switch (movement) {
             case "x":
@@ -182,19 +239,35 @@ public class Game {
                 cursor += 3;
                 cursorPos++;
                 break;
+            case "f":
+                if (tableroJugador[cursorPos].equals("F")) {
+                    tableroJugador[cursorPos] = "?";
+                    minasRestantes++;
+                } else {
+                    tableroJugador[cursorPos] = "F";
+                    minasRestantes--;
+                } break;
             default:
                 movement = "?";
                 break;
         } return movement;
     }
 
+    /**
+     * Destapa la casilla del tableroJugador con la de tablero
+     */
     public static void destapar() {
         tableroJugador[cursorPos] = tablero[cursorPos];
         if (tableroJugador[cursorPos].equals("x")) {
             Main.juego = false;
-        } casillasDestapadas++;
+        } else {
+            casillasDestapadas++;
+        }
     }
 
+    /**
+     * Comprueba si las casillasDestapadas es igual a tablero.lenght - NUMERO_MINAS
+     */
     public static void comprobar() {
         if (casillasDestapadas == tablero.length - NUMERO_MINAS) {
             Main.haGanado = true;

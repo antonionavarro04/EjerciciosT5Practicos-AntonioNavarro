@@ -1,6 +1,13 @@
 package ejercicio1;
 
+// ? Importamos la Clase Scanner y Locale
+import java.util.Scanner;
+import java.util.Locale;
+
 public class Main {
+    // ^ Definimos una instancia de la clase Scanner como private static final de nombre read y cambiamos su formato a US
+    private static final Scanner read = new Scanner(System.in).useLocale(Locale.US);
+
     // ^ Definimos las variables booleanas que controlaran el flujo del Juego, si quiere repetir o si quiere jugar de nuevo
     public static boolean juego, haGanado, sigueJugando = true;
 
@@ -13,14 +20,14 @@ public class Main {
         System.out.printf("'%sd%s' para mover el cursor a la %sDerecha%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);System.out.printf("'%sf%s' para %sMarcar%s la casilla\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("'%sx%s' para %sDestapar%s la casilla\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("Presiona %sEnter%s para comenzar... ", ConsoleManager.YELLOW, ConsoleManager.RESET);
-        Scan.read.nextLine();
+        read.nextLine();
         do {
             Game.generateBoard(); // * Generamos el Tablero
             do {
                 do {
                     Game.printGame();
                     System.out.print(">>> ");
-                    movement = Scan.read.nextLine();
+                    movement = read.nextLine();
                     movement = Game.moveCursor(movement);
                 } while (!movement.equals("x"));
                 Game.destapar();
@@ -35,14 +42,13 @@ public class Main {
                 System.out.printf("%sHas perdido!!!%s\n", ConsoleManager.RED, ConsoleManager.RESET);
             } System.out.printf("\nJugar otra vez? %sY%s/%sN%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.RED, ConsoleManager.RESET);
             System.out.print(">>> ");
-            movement = Scan.read.next();
+            movement = read.next();
             switch (movement) {
                 case "n":
                 case "N":
                 case "No":
                 case "NO":
                 case "no":
-                case "Nou":
                     sigueJugando = false;
                     break;
                 default:
