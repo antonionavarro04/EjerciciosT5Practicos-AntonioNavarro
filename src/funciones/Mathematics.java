@@ -1,4 +1,4 @@
-package ejercicio1;
+package funciones;
 
 // ? Imports
 import java.lang.Math;

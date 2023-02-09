@@ -1,9 +1,14 @@
 package ejercicio1;
 
+import java.util.Arrays;
+
+import funciones.Mathematics;
+import funciones.PerArrays;
+
 /**
  * Clase que controla el flujo del Juego
  * @author Antonio Navaro
- * @version Beta 1.0
+ * @version Release 1.0
  * @see PerArrays
  * @see Mathematics
  */
@@ -26,7 +31,7 @@ public class Game {
     /**
      * Tablero del Jugador, podrá colocar banderines y destapar casillas
      */
-    public static String tableroJugador[] = new String[20];
+    public static String tableroJugador[] = new String[tablero.length];
 
     /**
      * Posición relativa del cursor, este cursor "se mueve por el String del Array" y no por las posiciones del array
@@ -47,6 +52,11 @@ public class Game {
      * Variable que controla las minas que te quedan por tapar (Es opcional tapar las minas)
      */
     public static int minasRestantes = NUMERO_MINAS;
+
+    /**
+     * Variable que contiene el tablero convertido a
+     */
+    public static String tableroString;
 
     /**
      * Función que genera el tablero con las posiciones de las minas y los números correspondientes, también hace la función de reset() cada vez que empieces una nueva partida
@@ -86,6 +96,8 @@ public class Game {
                 tablero[pos] = checkMines(pos);
             }
         }
+
+        tableroString = Arrays.toString(tablero);
     }
 
     /**
@@ -170,7 +182,7 @@ public class Game {
                 System.out.print(", ");
             }
         } System.out.println("]");
-        for (int pos = 0; pos < 60; pos++) {
+        for (int pos = 0; pos < tableroString.length(); pos++) {
             if (pos == cursor) {
                 System.out.printf("%s^", ConsoleManager.PURPLE);
             } else {
@@ -250,18 +262,29 @@ public class Game {
             default:
                 movement = "?";
                 break;
-        } return movement;
+        }
+
+        if (cursorPos < 0) {
+            cursorPos = 0;
+            cursor = 1;
+        } else if (cursorPos > tablero.length - 1) {
+            cursorPos = tablero.length - 1;
+            cursor = tableroString.length() - 2;
+        }
+
+        return movement;
     }
 
     /**
      * Destapa la casilla del tableroJugador con la de tablero
      */
     public static void destapar() {
-        tableroJugador[cursorPos] = tablero[cursorPos];
-        if (tableroJugador[cursorPos].equals("x")) {
+        if (tablero[cursorPos].equals("x")) {
             Main.juego = false;
-        } else {
+            tableroJugador[cursorPos] = tablero[cursorPos];
+        } else if (tableroJugador[cursorPos].equals("?") && !tablero[cursorPos].equals("x") && !tablero[cursorPos].equals("F")) {
             casillasDestapadas++;
+            tableroJugador[cursorPos] = tablero[cursorPos];
         }
     }
 
