@@ -75,7 +75,7 @@ public class ConsoleManager {
     public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m"; // WHITE
 
     public static final void clear() {
-        System.out.print("\033[H\033[2J");  
+        System.out.print("\033[H\033[2J");
         System.out.flush(); // * Borramos la información de la pantalla
     }
 }

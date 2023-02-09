@@ -1,6 +1,5 @@
 package ejercicio2;
 
-import funciones.PerArrays;
 import funciones.Mathematics;
 
 public class Game {
@@ -11,10 +10,14 @@ public class Game {
         {1, 2, 3, 4, 5, 6, 7, 0.5f, 0.5f, 0.5f}, // 3 == Bastos
     };
 
-    public static float mazoJugador1[] = new float[0];
-    public static float mazoJugador2[] = new float[0];
+    public static float mazoJugador1;
+    public static float mazoJugador2;
 
-    public static void sacaCarta(float mazo[]) {
+    public static boolean seHaPasado = false;
+
+    public static void sacaCarta(String nombre) {
+        float mazo;
+
         int coordenadaY = Mathematics.rng(CARTAS_DISPONIBLES.length - 1);
         int coordenadaX = Mathematics.rng(CARTAS_DISPONIBLES[0].length - 1);
 
@@ -55,9 +58,15 @@ public class Game {
 
         System.out.printf("Tu carta es: %s de %s\n", valorCarta, nombreCarta);
 
-        mazo = PerArrays.insertData(mazo, CARTAS_DISPONIBLES[coordenadaY][coordenadaX]);
-
-        System.out.printf("Tienes %s puntos\n\n", sumatorio(mazo));
+        mazo = CARTAS_DISPONIBLES[coordenadaY][coordenadaX];
+        
+        if (nombre == Main.nombreJugador1) {
+            mazoJugador1 += mazo;
+            System.out.printf("Tienes %s puntos\n\n", mazoJugador1);
+        } else {
+            mazoJugador2 += mazo;
+            System.out.printf("Tienes %s puntos\n\n", mazoJugador2);
+        }
     }
 
     public static boolean menu(String jugador) {
@@ -82,15 +91,5 @@ public class Game {
                 movimiento = false;
                 break;
         } return movimiento;
-    }
-
-    public static float sumatorio(float array[]) {
-        float resultado = 0;
-
-        for (int i = 0; i < array.length; i++) {
-            resultado += array[i];
-        }
-
-        return resultado;
     }
 }
