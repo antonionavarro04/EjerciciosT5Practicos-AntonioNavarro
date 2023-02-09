@@ -52,7 +52,15 @@ public class Main {
                     sigueJugando = false;
                     break;
                 default:
-                    break;
+                    System.out.printf("\nComenzando nueva partida en:\n");
+                    for (int i = 3; i > 0; i--) {
+                        System.out.printf("%s.\n", i);
+                        try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException exception) {
+                                System.out.printf("Error: %s\n", exception);
+                            }
+                    } break;
             }
         } while (sigueJugando);
     }
