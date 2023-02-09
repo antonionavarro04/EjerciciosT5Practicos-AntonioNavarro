@@ -56,10 +56,10 @@ public class Main {
                     for (int i = 3; i > 0; i--) {
                         System.out.printf("%s.\n", i);
                         try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException exception) {
-                                System.out.printf("Error: %s\n", exception);
-                            }
+                            Thread.sleep(1000);
+                        } catch (InterruptedException exception) {
+                            System.out.printf("Error: %s\n", exception);
+                        }
                     } break;
             }
         } while (sigueJugando);
