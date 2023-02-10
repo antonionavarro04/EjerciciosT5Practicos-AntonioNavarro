@@ -34,11 +34,10 @@ public class Main {
                 Game.comprobar();
             } while (juego);
             ConsoleManager.clear();
+            Game.printGameFull();
             if (haGanado) {
-                Game.printGameFull();
                 System.out.printf("%sHas ganado!!!%s\n", ConsoleManager.GREEN, ConsoleManager.RESET);
             } else {
-                Game.printGame();
                 System.out.printf("%sHas perdido!!!%s\n", ConsoleManager.RED, ConsoleManager.RESET);
             } System.out.printf("\nJugar otra vez? %sY%s/%sN%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.RED, ConsoleManager.RESET);
             System.out.print(">>> ");

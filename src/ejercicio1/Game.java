@@ -8,7 +8,7 @@ import funciones.PerArrays;
 /**
  * Clase que controla el flujo del Juego
  * @author Antonio Navaro
- * @version Release 1.0
+ * @version Release 1.2
  * @see PerArrays
  * @see Mathematics
  */
@@ -259,6 +259,8 @@ public class Game {
                     tableroJugador[cursorPos] = "F";
                     minasRestantes--;
                 } break;
+            case "*":
+                ayuda();
             default:
                 movement = "?";
                 break;
@@ -279,12 +281,27 @@ public class Game {
      * Destapa la casilla del tableroJugador con la de tablero
      */
     public static void destapar() {
+        int positive = cursorPos + 1, negative = cursorPos - 1;
+
         if (tablero[cursorPos].equals("x")) {
             Main.juego = false;
             tableroJugador[cursorPos] = tablero[cursorPos];
-        } else if (tableroJugador[cursorPos].equals("?") && !tablero[cursorPos].equals("x") && !tablero[cursorPos].equals("F")) {
+        } else if (tableroJugador[cursorPos].equals("?") && !tablero[cursorPos].equals("F")) {
             casillasDestapadas++;
             tableroJugador[cursorPos] = tablero[cursorPos];
+            
+        }
+
+        while (positive < tablero.length && !tablero[positive].equals("x") && !tableroJugador[positive].equals("F")) {
+            tableroJugador[positive] = tablero[positive];
+            positive++;
+            casillasDestapadas++;
+        }
+
+        while (negative >= 0 && !tablero[negative].equals("x") && !tableroJugador[negative].equals("F") && !tablero[negative].equals("F")) {
+            tableroJugador[negative] = tablero[negative];
+            negative--;
+            casillasDestapadas++;
         }
     }
 
@@ -295,6 +312,16 @@ public class Game {
         if (casillasDestapadas == tablero.length - NUMERO_MINAS) {
             Main.haGanado = true;
             Main.juego = false;
+        }
+    }
+
+    public static void ayuda() {
+        try {
+            ConsoleManager.clear();
+            PerArrays.printArray(tablero);
+            Thread.sleep(500);
+        } catch (InterruptedException exception) {
+            System.err.println(exception);
         }
     }
 }

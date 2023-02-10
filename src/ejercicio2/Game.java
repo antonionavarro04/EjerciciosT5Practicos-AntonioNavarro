@@ -13,7 +13,7 @@ public class Game {
     public static float mazoJugador1;
     public static float mazoJugador2;
 
-    public static boolean seHaPasado = false;
+    public static final float THRESHOLD = 7.5f;
 
     public static void sacaCarta(String nombre) {
         float mazo;
@@ -60,7 +60,7 @@ public class Game {
 
         mazo = CARTAS_DISPONIBLES[coordenadaY][coordenadaX];
         
-        if (nombre == Main.nombreJugador1) {
+        if (nombre == Main.NOMBRE_JUGADOR_1) {
             mazoJugador1 += mazo;
             System.out.printf("Tienes %s puntos\n\n", mazoJugador1);
         } else {
@@ -91,5 +91,27 @@ public class Game {
                 movimiento = false;
                 break;
         } return movimiento;
+    }
+
+    public static boolean check(float mazo) {
+        boolean seHaPasado = false;
+
+        if (mazo > THRESHOLD) {
+            seHaPasado = true;
+        }
+
+        return seHaPasado;
+    }
+
+    public static void ganador(String n1, String n2) {
+        if (mazoJugador1 > 0 && mazoJugador2 == 0) {
+            System.out.printf("El ganador es %s con %s puntos", n2, mazoJugador2);
+        } else if (mazoJugador1 > mazoJugador2) {
+            System.out.printf("El ganador es %s con %s puntos", n1, mazoJugador1);
+        } else if (mazoJugador1 < mazoJugador2) {
+            System.out.printf("El ganador es %s con %s puntos", n2, mazoJugador2);
+        } else {
+            System.out.printf("Empate con %s puntos", mazoJugador1);
+        }
     }
 }
