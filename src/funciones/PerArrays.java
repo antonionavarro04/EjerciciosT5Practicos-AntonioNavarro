@@ -157,6 +157,18 @@ public class PerArrays {
             } System.out.println();
         }
     }
+
+    /**
+     * Método que imprime un array sin devolver una String
+     * @param a Array para imprimir
+     */
+    public static void printArray(char a[][]) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
+                System.out.print(a[i][j] + " ");
+            } System.out.println();
+        }
+    }
     
     /**
      * Método que imprime un array sin devolver una String
