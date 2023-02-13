@@ -1,4 +1,4 @@
-package ejercicio1;
+package funciones;
 
 public class ConsoleManager {
     // Reset
