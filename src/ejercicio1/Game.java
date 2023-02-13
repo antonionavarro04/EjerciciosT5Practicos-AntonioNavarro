@@ -1,13 +1,13 @@
 package ejercicio1;
 
 import java.util.Arrays;
-
-import funciones.Mathematics;
 import funciones.PerArrays;
+import funciones.Mathematics;
+import funciones.ConsoleManager;
 
 /**
  * Clase que controla el flujo del Juego
- * @author Antonio Navaro
+ * @author Antonio Navarro
  * @version Release 1.2
  * @see PerArrays
  * @see Mathematics
@@ -62,7 +62,7 @@ public class Game {
      * Función que genera el tablero con las posiciones de las minas y los números correspondientes, también hace la función de reset() cada vez que empieces una nueva partida
      */
     public static void generateBoard() {
-        // Reseteamos las variables, nuevas partidas
+        /* ! RESETS ! */
         cursor = 1;
         cursorPos = 0;
         minasRestantes = NUMERO_MINAS;
@@ -70,9 +70,10 @@ public class Game {
         Main.haGanado = false;
         casillasDestapadas = 0;
 
-        // Rellenamos los dos arrays con "?"
+        // ? Rellenamos los dos arrays con "?"
         PerArrays.fillArray(tablero, "?");
         PerArrays.fillArray(tableroJugador, "?");
+        /* ! RESETS ! */
 
         int posicionesOcupadas[] = new int[0];
 
@@ -289,7 +290,6 @@ public class Game {
         } else if (tableroJugador[cursorPos].equals("?") && !tablero[cursorPos].equals("F")) {
             casillasDestapadas++;
             tableroJugador[cursorPos] = tablero[cursorPos];
-            
         }
 
         while (positive < tablero.length && !tablero[positive].equals("x") && !tableroJugador[positive].equals("F")) {

@@ -1,8 +1,9 @@
 package ejercicio1;
 
 // ? Importamos la Clase Scanner y Locale
-import java.util.Scanner;
 import java.util.Locale;
+import java.util.Scanner;
+import funciones.ConsoleManager;
 
 public class Main {
     // ^ Definimos una instancia de la clase Scanner como private static final de nombre read y cambiamos su formato a US
