@@ -40,6 +40,7 @@ public class Main {
                 System.out.printf("%sHas ganado!!!%s\n", ConsoleManager.GREEN, ConsoleManager.RESET);
             } else {
                 System.out.printf("%sHas perdido!!!%s\n", ConsoleManager.RED, ConsoleManager.RESET);
+                GameOver.sound();
             } System.out.printf("\nJugar otra vez? %sY%s/%sN%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.RED, ConsoleManager.RESET);
             System.out.print(">>> ");
             movement = read.next();

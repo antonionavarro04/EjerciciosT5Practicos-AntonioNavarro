@@ -16,7 +16,7 @@ public class Game {
     /**
      * Variable de Desarrollo, imprime el tablero entero arriba del que tu estes jugando
      */
-    private static final boolean DEV = false; // ? Cambia esta variable a true para tener Hacks al Jugar
+    private static final boolean DEV = true; // ? Cambia esta variable a true para tener Hacks al Jugar
 
     /**
      * Número de Minas que tendrá el Tablero, si es menor a 0 o menor no se generarán minas

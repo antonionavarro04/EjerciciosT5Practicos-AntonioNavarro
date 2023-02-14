@@ -103,15 +103,19 @@ public class Game {
         return seHaPasado;
     }
 
-    public static void ganador(String n1, String n2) {
-        if (mazoJugador1 > 0 && mazoJugador2 == 0) {
-            System.out.printf("El ganador es %s con %s puntos", n2, mazoJugador2);
-        } else if (mazoJugador1 > mazoJugador2) {
+    public static void ganador(String n1, String n2, boolean j2perdio) {
+        if (j2perdio) {
             System.out.printf("El ganador es %s con %s puntos", n1, mazoJugador1);
-        } else if (mazoJugador1 < mazoJugador2) {
-            System.out.printf("El ganador es %s con %s puntos", n2, mazoJugador2);
         } else {
-            System.out.printf("Empate con %s puntos", mazoJugador1);
+            if (mazoJugador1 > 0 && mazoJugador2 == 0) {
+                System.out.printf("El ganador es %s con %s puntos", n2, mazoJugador2);
+            } else if (mazoJugador1 > mazoJugador2) {
+                System.out.printf("El ganador es %s con %s puntos", n1, mazoJugador1);
+            } else if (mazoJugador1 < mazoJugador2) {
+                System.out.printf("El ganador es %s con %s puntos", n2, mazoJugador2);
+            } else {
+                System.out.printf("Empate con %s puntos", mazoJugador1);
+            }
         }
     }
 }

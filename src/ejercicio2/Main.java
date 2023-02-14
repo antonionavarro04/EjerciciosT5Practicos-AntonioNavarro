@@ -43,8 +43,6 @@ public class Main {
             }
         }
 
-        Game.ganador(NOMBRE_JUGADOR_1, NOMBRE_JUGADOR_2);
-
-        Scan.read.nextLine();
+        Game.ganador(NOMBRE_JUGADOR_1, NOMBRE_JUGADOR_2, seHaPasado);
     }
 }
