@@ -1,7 +1,5 @@
 package ejercicio1;
 
-// TODO | Falta comentar toda la Clase
-
 // ? Importamos la Clase Scanner y Locale
 import java.util.Locale;
 import java.util.Scanner;
@@ -18,13 +16,22 @@ public class Main {
     public static void main(String[] args) {
         String movement;
 
+        // ? Configuraciones previos al juego
+        System.out.println("Configuraciones previas al juego:");
+        System.out.print("Introduce el tamaño del tablero: ");
+        Game.longitud = read.nextInt();
+        System.out.print("\nIntroduce el número de minas: ");
+        Game.numeroMinas = read.nextInt();
+        ConsoleManager.clear();
+
+        // ? Pequeño menú de inicio
         System.out.printf("Bienvenido al %sJuego%s del %sBuscaminas%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.RED, ConsoleManager.RESET);
         System.out.printf("Los %sControles%s son:\n", ConsoleManager.YELLOW, ConsoleManager.RESET);
         System.out.printf("'%sa%s' para mover el cursor a la %sIzquierda%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("'%sd%s' para mover el cursor a la %sDerecha%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);System.out.printf("'%sf%s' para %sMarcar%s la casilla\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("'%sx%s' para %sDestapar%s la casilla\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("Presiona %sEnter%s para comenzar... ", ConsoleManager.YELLOW, ConsoleManager.RESET);
-        read.nextLine();
+        read.nextLine(); read.nextLine();
         do {
             Game.generateBoard(); // * Generamos el Tablero
             do {
