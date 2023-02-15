@@ -15,24 +15,25 @@ public class Main {
 
     public static void main(String[] args) {
         String movement;
-
-        // ? Configuraciones previos al juego
-        System.out.println("Configuraciones previas al juego:");
-        System.out.print("Introduce el tamaño del tablero: ");
-        Game.longitud = read.nextInt();
-        System.out.print("\nIntroduce el número de minas: ");
-        Game.numeroMinas = read.nextInt();
-        ConsoleManager.clear();
-
+        
         // ? Pequeño menú de inicio
+        ConsoleManager.clear();
         System.out.printf("Bienvenido al %sJuego%s del %sBuscaminas%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.RED, ConsoleManager.RESET);
         System.out.printf("Los %sControles%s son:\n", ConsoleManager.YELLOW, ConsoleManager.RESET);
         System.out.printf("'%sa%s' para mover el cursor a la %sIzquierda%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("'%sd%s' para mover el cursor a la %sDerecha%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);System.out.printf("'%sf%s' para %sMarcar%s la casilla\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("'%sx%s' para %sDestapar%s la casilla\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.GREEN, ConsoleManager.RESET);
         System.out.printf("Presiona %sEnter%s para comenzar... ", ConsoleManager.YELLOW, ConsoleManager.RESET);
-        read.nextLine(); read.nextLine();
+        read.nextLine();
         do {
+            // ? Configuraciones previos al juego
+            ConsoleManager.clear();
+            System.out.println("Configuraciones previas al juego:");
+            System.out.print("Introduce el tamaño del tablero: ");
+            Game.longitud = read.nextInt();
+            System.out.print("\nIntroduce el número de minas: ");
+            Game.numeroMinas = read.nextInt();
+
             Game.generateBoard(); // * Generamos el Tablero
             do {
                 do {
@@ -53,7 +54,7 @@ public class Main {
                 GameOver.sound();
             } System.out.printf("\nJugar otra vez? %sY%s/%sN%s\n", ConsoleManager.GREEN, ConsoleManager.RESET, ConsoleManager.RED, ConsoleManager.RESET);
             System.out.print(">>> ");
-            movement = read.next();
+            movement = read.next(); read.nextLine();
             switch (movement) {
                 case "n":
                 case "N":
