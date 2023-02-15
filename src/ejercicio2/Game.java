@@ -1,4 +1,5 @@
 package ejercicio2;
+// TODO | Falta comentar toda la Clase
 
 import funciones.Mathematics;
 
@@ -81,14 +82,8 @@ public class Game {
             case 'n':
                 movimiento = false;                
                 break;
-            case 'S':
-            case 's':
-            case 'Y':
-            case 'y':
-                movimiento = true;
-                break;
             default:
-                movimiento = false;
+                movimiento = true;
                 break;
         } return movimiento;
     }

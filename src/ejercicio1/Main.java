@@ -1,8 +1,11 @@
 package ejercicio1;
 
+// TODO | Falta comentar toda la Clase
+
 // ? Importamos la Clase Scanner y Locale
 import java.util.Locale;
 import java.util.Scanner;
+
 import funciones.ConsoleManager;
 
 public class Main {

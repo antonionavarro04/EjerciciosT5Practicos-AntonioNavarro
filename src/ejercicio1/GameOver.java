@@ -2,6 +2,7 @@ package ejercicio1;
 
 import javax.sound.sampled.*;
 
+// Crea un sonido.
 public class GameOver {
     /* ? No nos vamos a engañar me lo ha hecho el chat GPT ? */
   public static void sound() {

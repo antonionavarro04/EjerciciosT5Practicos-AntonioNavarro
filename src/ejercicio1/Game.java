@@ -1,9 +1,12 @@
 package ejercicio1;
 
+// TODO | Faltan comentarios mas en detalle
+
 import java.util.Arrays;
-import funciones.PerArrays;
-import funciones.Mathematics;
+
 import funciones.ConsoleManager;
+import funciones.Mathematics;
+import funciones.PerArrays;
 
 /**
  * Clase que controla el flujo del Juego
