@@ -21,8 +21,11 @@ public class Main {
                 do {
                     Game.printGame(Game.tableroJugador);
                     System.out.print("\n>>> ");
-                    movement = read.nextLine().charAt(0);
-                    movement = Game.moveCursor(movement);
+                    try {
+                        movement = read.nextLine().charAt(0);
+                    } catch (StringIndexOutOfBoundsException exception) {
+                        movement = '?';
+                    } movement = Game.moveCursor(movement);
                 } while (movement != 'x');
                 Game.destapar();
             } while (juego);

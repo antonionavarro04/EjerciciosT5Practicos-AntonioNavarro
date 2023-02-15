@@ -7,10 +7,10 @@ import funciones.Mathematics;
 import funciones.PerArrays;
 
 public class Game {
-    public static final int X_WIDTH = 8;
-    public static final int Y_WIDTH = 8;
+    public static final int X_WIDTH = 30;
+    public static final int Y_WIDTH = 16;
 
-    public static final int NUMERO_MINAS = 10;
+    public static final int NUMERO_MINAS = 99;
 
     public static char tablero[][] = new char[Y_WIDTH][X_WIDTH];
     public static char tableroJugador[][] = new char[tablero.length][tablero[0].length];
@@ -44,7 +44,6 @@ public class Game {
             int comparar[] = new int[2];
             int compararArray[] = new int[2];
 
-            // TODO | Hacer que las minas no se solapen de casualidad
             do {
                 volverA = false;
 
