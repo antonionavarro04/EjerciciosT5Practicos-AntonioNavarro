@@ -1,7 +1,7 @@
 package twodminer;
 
-import java.util.Scanner;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class Main {
     // ^ Definimos una instancia de la clase Scanner como private static final de nombre read y cambiamos su formato a US
@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         char movement;
 
-        /* ? INTRO ? */
+        // TODO | Intro
 
         do {
             Game.generateBoard();
@@ -30,6 +30,8 @@ public class Main {
                 Game.destapar();
             } while (juego);
             sigueJugando = false;
+
+            // TODO | Final
         } while (sigueJugando);
     }
 }

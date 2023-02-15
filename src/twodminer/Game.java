@@ -7,6 +7,8 @@ import funciones.Mathematics;
 import funciones.PerArrays;
 
 public class Game {
+    // TODO | Hacer que esto Se Pueda Configurar
+    
     public static final int X_WIDTH = 30;
     public static final int Y_WIDTH = 16;
 
@@ -353,6 +355,8 @@ public class Game {
             tableroJugador[pos_y][pos_x] = tablero[pos_y][pos_x];
         }
 
+        // TODO | Terminar Recursividad
+
         /* while (positive < tablero.length && !tablero[positive].equals("x") && !tableroJugador[positive].equals("F")) {
             tableroJugador[positive] = tablero[positive];
             positive++;
@@ -365,5 +369,5 @@ public class Game {
             casillasDestapadas++;
         } */
     }
-
+    // TODO | Comprobador
 }
